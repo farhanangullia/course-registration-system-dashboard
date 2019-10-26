@@ -1,3 +1,37 @@
-<p>
-  login works!
-</p>
+<main class="content-wrapper">
+  <section class="container padding-top-3x padding-bottom-3x" style="text-align: center;">
+
+
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+      <div class="p-grid" style="margin:20px">
+        <div class="p-col-12">
+          <div class="p-grid p-justify-center">
+            <!-- <div class="p-sm-12 p-md-5 p-lg-4 p-xl-4">
+              <img src="../assets/logo/bfast_logo.png" width="75%" height="auto">
+            </div> -->
+          </div>
+          <div class="p-grid p-justify-center">
+            <div class="p-sm-12 p-md-5 p-lg-5 p-xl-5">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Username" formControlName="username">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="p-grid p-justify-center">
+            <div class="p-sm-12 p-md-5 p-lg-5 p-xl-5">
+              <mat-form-field class="example-full-width">
+                <input matInput type="password" placeholder="Password" formControlName="password">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="p-grid p-justify-center">
+            <div class="p-sm-12 p-md-5 p-lg-5 p-xl-5">
+              <button mat-stroked-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
