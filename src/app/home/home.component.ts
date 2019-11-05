@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  opened: boolean;
+
+  accountType: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.accountType = JSON.parse(localStorage.getItem("crsaccount")).type;
   }
 
 }

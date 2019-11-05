@@ -1,0 +1,33 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <div class="header-button align-icon" (click)="isExpanded = !isExpanded">
+      <mat-icon>menu</mat-icon>Menu
+    </div>
+
+    <span class="example-fill-remaining-space"></span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+      <mat-nav-list class="dashboard">
+
+        <a mat-list-item>
+          <mat-icon matTooltip="Home" matTooltipPosition="after" mat-list-icon>home</mat-icon>
+          <p matLine *ngIf="isExpanded">Home</p>
+        </a>
+
+        <a mat-list-item (click)="logout($event)">
+          <mat-icon matTooltip="Log out" matTooltipPosition="after" mat-list-icon>exit_to_app</mat-icon>
+          <p matLine *ngIf="isExpanded">Sign Out</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

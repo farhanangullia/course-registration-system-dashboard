@@ -22,7 +22,7 @@ import {
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl("", [Validators.required]),
+    accountid: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   });
 
@@ -58,6 +58,9 @@ export class LoginComponent implements OnInit {
     this.restApi.postLogin(this.loginForm.value).subscribe(
       res => {
         console.log(res);
+
+
+        localStorage.setItem("crsaccount", JSON.stringify(res));
 
         // // when we successfully login, store the value in sessionstorage
         // sessionStorage.setItem("username", this.loginForm.value.username);

@@ -4,7 +4,7 @@
   <h1>Farhan Angullia</h1>
   <br />
 
-  <mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-list *ngIf="(accountType.includes('student'))" cols="2" rowHeight="2:1">
     <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
     <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Register Courses</button>
     </mat-grid-tile>
@@ -12,8 +12,17 @@
     </mat-grid-tile>
     <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">View Classes</button>
     </mat-grid-tile>
-    <!-- <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">View Courses</button>
-    </mat-grid-tile> -->
+  </mat-grid-list>
+
+  <mat-grid-list *ngIf="(accountType.includes('admin'))" cols="2" rowHeight="2:1">
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Bypass Courses</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list *ngIf="(accountType.includes('teacher'))" cols="2" rowHeight="2:1">
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">View My Courses</button>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -14,13 +14,20 @@ import { CardModule } from 'primeng/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { MatIconModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     CardModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatTooltipModule
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent]
