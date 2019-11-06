@@ -23,28 +23,23 @@
 
       <div class="ui-g-12 ui-md-8 regCourse-details">
         <div class="ui-g">
-          <div class="ui-g-2 ui-sm-6">Module Code: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{bypassReq.modulecode}}</b></div>
           <div class="ui-g-2 ui-sm-6">Student ID: </div>
           <div class="ui-g-10 ui-sm-6"><b>{{bypassReq.studentid}}</b></div>
+          <div class="ui-g-2 ui-sm-6">Module Code: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{bypassReq.modulecode}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Module Name: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{bypassReq.moduleName}}</b></div>
 
           <div class="ui-g-2 ui-sm-6">Quota: </div>
           <div class="ui-g-10 ui-sm-6"><b>{{bypassReq.quota}}</b></div>
           <div class="ui-g-2 ui-sm-6">Current Size: </div>
           <div class="ui-g-10 ui-sm-6"><b>{{bypassReq.currentsize}}</b></div>
-          <!-- <div class="ui-g-2 ui-sm-6">Total EV: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalEV}}</b></div>
-          <div class="ui-g-2 ui-sm-6">Total AC: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalAC}}</b></div> -->
 
-          <!-- <div class="ui-g-2 ui-sm-6">SPI: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalEV/userStory.totalPV}}</b></div>
-          <div class="ui-g-2 ui-sm-6">CPI: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalEV/userStory.totalAC}}</b></div> -->
         </div>
       </div>
       <div class="ui-g-12 ui-md-1 view-icon">
-        <button pButton type="button" icon="pi pi-user-plus" style="width:100%;height:100%"
+        <button pButton type="button" icon="pi pi-key" style="width:100%;height:100%"
           (click)="acceptRequest($event, bypassReq)">Accept/Reject</button>
       </div>
     </div>

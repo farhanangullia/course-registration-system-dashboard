@@ -55,6 +55,13 @@ export class RestApiService {
     );
   }
 
+  updateBypassRequest(bypassReqParams: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/updateBypassRequest", bypassReqParams, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
