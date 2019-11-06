@@ -25,6 +25,36 @@ export class RestApiService {
     );
   }
 
+  retrieveCoursesForRegistration(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveCoursesForRegistration", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  registerCourse(regCourseParams: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/registerCourse", regCourseParams, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  retrieveMyStudentCourses(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveMyStudentCourses", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+
+  retrieveBypassRequests(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveBypassRequests", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

@@ -4,7 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { RegistercoursesComponent } from './registercourses/registercourses.component';
-
+import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
+import { BypasscoursesComponent } from './bypasscourses/bypasscourses.component';
 const routes: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,7 +15,9 @@ const routes: Routes = [
     component: SidenavComponent,
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'registercourses', component: RegistercoursesComponent }
+      { path: 'registercourses', component: RegistercoursesComponent },
+      { path: 'viewcourses', component: ViewcoursesComponent },
+      { path: 'bypasscourses', component: BypasscoursesComponent }
     ]
   },
   // SHould have one block here containing homecomponent path

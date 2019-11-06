@@ -28,6 +28,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { BypasscoursesComponent } from './bypasscourses/bypasscourses.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ButtonModule } from 'primeng/button';
     SidenavComponent,
     RegistercoursesComponent,
     ViewcoursesComponent,
-    ViewclassesComponent
+    ViewclassesComponent,
+    BypasscoursesComponent
   ],
   imports: [
     BrowserModule,

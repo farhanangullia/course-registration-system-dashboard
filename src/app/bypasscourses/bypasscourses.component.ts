@@ -4,19 +4,20 @@ import { SelectItem } from 'primeng/api';
 import swal from 'sweetalert2';
 
 import { RestApiService } from "../rest-api.service";
-@Component({
-  selector: 'app-viewcourses',
-  templateUrl: './viewcourses.component.html',
-  styleUrls: ['./viewcourses.component.css']
-})
-export class ViewcoursesComponent implements OnInit {
-  listOfMyCourses: any[];
 
-  selectedRegCourse: any;
+@Component({
+  selector: 'app-bypasscourses',
+  templateUrl: './bypasscourses.component.html',
+  styleUrls: ['./bypasscourses.component.css']
+})
+export class BypasscoursesComponent implements OnInit {
+
+  listOfBypassRequests: any[];
+
+  selectedBypassReq: any;
 
   dialogVisible: boolean;
 
-  currentProject: any;
 
   displayDialog: boolean;
 
@@ -32,28 +33,27 @@ export class ViewcoursesComponent implements OnInit {
   checked: boolean = false;
 
   accountid: any;
+
   constructor(public restApi: RestApiService) { }
 
   ngOnInit() {
+
     this.sortOptions = [
       // { label: 'Newest First', value: '!supportTicketId' },
       // { label: 'Oldest First', value: 'supportTicketId' },
-      { label: 'Highest Quota', value: '!quota' },
-      { label: 'Smallest Quota', value: 'quota' }
+      { label: 'Highest Priority', value: '!priority' },
+      { label: 'Lowest Priority', value: 'priority' }
     ];
-
-
 
     let crsaccount = JSON.parse(localStorage.getItem('crsaccount'));
     this.accountid = crsaccount.accountid;
 
 
-
-    this.restApi.retrieveMyStudentCourses(crsaccount).subscribe(
+    this.restApi.retrieveBypassRequests(crsaccount).subscribe(
       res => {
         console.log(res);
 
-        this.listOfMyCourses = res;
+        this.listOfBypassRequests = res;
 
 
       },
@@ -63,7 +63,7 @@ export class ViewcoursesComponent implements OnInit {
         swal.fire({
           type: 'error',
           title: 'Oops...',
-          text: 'Error retrieving courses!',
+          text: 'Error retrieving bypass requests!',
 
         }).then(() => {
 
@@ -74,6 +74,8 @@ export class ViewcoursesComponent implements OnInit {
       }
     );
   }
+
+
 
   onSortChange(event) {
 
@@ -89,5 +91,4 @@ export class ViewcoursesComponent implements OnInit {
       this.sortField = value;
     }
   }
-
 }
