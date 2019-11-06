@@ -1,0 +1,51 @@
+<p-dataView #dv [value]="listOfCoursesToRegister" [paginator]="true" [rows]="10"
+  emptyMessage="No available modules for registration" layout="list" paginatorPosition="both" filterBy="modulecode"
+  [sortField]="sortField" [sortOrder]="sortOrder">
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-4">
+          <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
+            (onChange)="onSortChange($event)" [style]="{'min-width':'15em'}"></p-dropdown>
+        </div>
+        <div class="ui-g-6 ui-md-4 filter-container">
+          <div style="position:relative">
+            <input type="search" pInputText placeholder="Search by details" (keyup)="dv.filter($event.target.value)">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </p-header>
+  <ng-template let-regCourse pTemplate="listItem">
+    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+
+      <div class="ui-g-12 ui-md-8 regCourse-details">
+        <div class="ui-g">
+          <div class="ui-g-2 ui-sm-6">Module Code: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.modulecode}}</b></div>
+          <div class="ui-g-2 ui-sm-6">Name: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.name}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Quota: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.quota}}</b></div>
+          <div class="ui-g-2 ui-sm-6">Current Size: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.currentsize}}</b></div>
+          <!-- <div class="ui-g-2 ui-sm-6">Total EV: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalEV}}</b></div>
+          <div class="ui-g-2 ui-sm-6">Total AC: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalAC}}</b></div> -->
+
+          <!-- <div class="ui-g-2 ui-sm-6">SPI: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalEV/userStory.totalPV}}</b></div>
+          <div class="ui-g-2 ui-sm-6">CPI: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{userStory.totalEV/userStory.totalAC}}</b></div> -->
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-1 view-icon">
+        <button pButton type="button" icon="pi pi-user-plus" style="width:100%;height:100%"
+          (click)="registerCourse($event, regCourse)">Register</button>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

@@ -11,7 +11,7 @@
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
       <mat-nav-list class="dashboard">
 
-        <a mat-list-item>
+        <a mat-list-item [routerLink]="'/home'">
           <mat-icon matTooltip="Home" matTooltipPosition="after" mat-list-icon>home</mat-icon>
           <p matLine *ngIf="isExpanded">Home</p>
         </a>

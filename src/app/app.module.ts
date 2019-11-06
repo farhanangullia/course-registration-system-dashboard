@@ -20,6 +20,14 @@ import { MatIconModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { RegistercoursesComponent } from './registercourses/registercourses.component';
+import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
+import { ViewclassesComponent } from './viewclasses/viewclasses.component';
+import { DataViewModule } from 'primeng/dataview';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -27,7 +35,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SidenavComponent
+    SidenavComponent,
+    RegistercoursesComponent,
+    ViewcoursesComponent,
+    ViewclassesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +57,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DataViewModule,
+    DialogModule,
+    DropdownModule,
+    InputTextModule,
+    ButtonModule
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent]

@@ -5,8 +5,11 @@
   <br />
 
   <mat-grid-list *ngIf="(accountType.includes('student'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Register Courses</button>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">
+        <mat-icon style="font-size:70px;position: absolute">account_box</mat-icon>Profile
+      </button></mat-grid-tile>
+    <mat-grid-tile><button mat-button color="primary" [routerLink]="'/registercourses'"
+        style="width:100%;height:100%">Register Courses</button>
     </mat-grid-tile>
     <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">View My Courses</button>
     </mat-grid-tile>
