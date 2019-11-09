@@ -113,6 +113,13 @@ export class RestApiService {
     );
   }
 
+  updateCurrentAY(): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/updateCurrentAY", httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error("An unknown error has occurred:", error.error.message);

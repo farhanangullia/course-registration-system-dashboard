@@ -1,4 +1,4 @@
-<p-dataView #dv [value]="listOfMyClasses" [paginator]="true" [rows]="10" emptyMessage="No classes assigned"
+<p-dataView #dv [value]="listOfMyCourses" [paginator]="true" [rows]="10" emptyMessage="No courses registered"
   layout="list" paginatorPosition="both" filterBy="modulecode" [sortField]="sortField" [sortOrder]="sortOrder">
   <p-header>
     <div class="ui-helper-clearfix">
@@ -17,23 +17,17 @@
       </div>
     </div>
   </p-header>
-  <ng-template let-classAss pTemplate="listItem">
+  <ng-template let-regCourse pTemplate="listItem">
     <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
 
-      <div class="ui-g-12 ui-md-8 classAss-details">
+      <div class="ui-g-12 ui-md-8 regCourse-details">
         <div class="ui-g">
-          <div class="ui-g-2 ui-sm-6">Class ID: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{classAss.classid}}</b></div>
           <div class="ui-g-2 ui-sm-6">Module Code: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{classAss.modulecode}}</b></div>
-          <div class="ui-g-2 ui-sm-6">Role: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{classAss.role}}</b></div>
-
-          <div class="ui-g-2 ui-sm-6">Teacher-in-Charge: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{classAss.name}}</b></div>
-          <div class="ui-g-2 ui-sm-6">Teacher's Room: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{classAss.roomid}}</b></div>
-
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.modulecode}}</b></div>
+          <div class="ui-g-2 ui-sm-6">Name: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.name}}</b></div>
+          <div class="ui-g-2 ui-sm-6">Department ID: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{regCourse.departmentid}}</b></div>
 
         </div>
       </div>

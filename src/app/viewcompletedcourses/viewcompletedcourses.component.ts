@@ -5,12 +5,12 @@ import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { RestApiService } from "../rest-api.service";
 @Component({
-  selector: 'app-viewclasses',
-  templateUrl: './viewclasses.component.html',
-  styleUrls: ['./viewclasses.component.css']
+  selector: 'app-viewcompletedcourses',
+  templateUrl: './viewcompletedcourses.component.html',
+  styleUrls: ['./viewcompletedcourses.component.css']
 })
-export class ViewclassesComponent implements OnInit {
-  listOfMyClasses: any[];
+export class ViewcompletedcoursesComponent implements OnInit {
+  listOfMyCourses: any[];
 
   selectedRegCourse: any;
 
@@ -31,13 +31,15 @@ export class ViewclassesComponent implements OnInit {
 
   checked: boolean = false;
 
+  // accountid: any;
   constructor(public restApi: RestApiService, public router: Router) { }
-
   ngOnInit() {
+
     this.sortOptions = [
-      { label: 'Descending Class ID', value: '!classid' },
-      { label: 'Ascending Class ID', value: 'classid' }
+      { label: 'Descending Module Code', value: '!modulecode' },
+      { label: 'Ascending Module Code', value: 'modulecode' }
     ];
+
 
 
     let crsaccount = JSON.parse(localStorage.getItem('crsaccount'));
@@ -45,11 +47,11 @@ export class ViewclassesComponent implements OnInit {
       this.router.navigate(['/login']);
     } else {
 
-      this.restApi.retrieveStudentClasses(crsaccount).subscribe(
+      this.restApi.retrieveStudentCompletedModules(crsaccount).subscribe(
         res => {
           console.log(res);
 
-          this.listOfMyClasses = res;
+          this.listOfMyCourses = res;
 
 
         },
@@ -59,7 +61,7 @@ export class ViewclassesComponent implements OnInit {
           swal.fire({
             type: 'error',
             title: 'Oops...',
-            text: 'Error retrieving classes!',
+            text: 'Error retrieving courses!',
 
           }).then(() => {
 
@@ -71,21 +73,9 @@ export class ViewclassesComponent implements OnInit {
       );
     }
 
+
   }
 
 
-  onSortChange(event) {
 
-    console.log('asdsa');
-    let value = event.value;
-
-    if (value.indexOf('!') === 0) {
-      this.sortOrder = -1;
-      this.sortField = value.substring(1, value.length);
-    }
-    else {
-      this.sortOrder = 1;
-      this.sortField = value;
-    }
-  }
 }

@@ -5,7 +5,7 @@ import { SelectItem } from 'primeng/api';
 import swal from 'sweetalert2';
 
 import { RestApiService } from "../rest-api.service";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registercourses',
   templateUrl: './registercourses.component.html',
@@ -35,73 +35,56 @@ export class RegistercoursesComponent implements OnInit {
   accountid: any;
 
 
-  constructor(public restApi: RestApiService) { }
+  constructor(public restApi: RestApiService, public router: Router) { }
 
   ngOnInit() {
 
     this.sortOptions = [
-      // { label: 'Newest First', value: '!supportTicketId' },
-      // { label: 'Oldest First', value: 'supportTicketId' },
       { label: 'Highest Quota', value: '!quota' },
       { label: 'Smallest Quota', value: 'quota' }
     ];
 
-    // this.listOfCoursesToRegister = [{
-    //   "adminid": "a003",
-    //   "currentsize": 70,
-    //   "isgraduatecourse": false,
-    //   "modulecode": "CS101",
-    //   "name": "Intro to Programming",
-    //   "quota": 90
-    // },
-    // {
-    //   "adminid": "a003",
-    //   "currentsize": 70,
-    //   "isgraduatecourse": false,
-    //   "modulecode": "CS102",
-    //   "name": "Intermediate Programming",
-    //   "quota": 80
-    // }];
 
     let crsaccount = JSON.parse(localStorage.getItem('crsaccount'));
-    this.accountid = crsaccount.accountid;
+
+    if (crsaccount === null) {
+      this.router.navigate(['/login']);
+    } else {
+      this.accountid = crsaccount.accountid;
 
 
 
-    this.restApi.retrieveCoursesForRegistration(crsaccount).subscribe(
-      res => {
-        console.log(res);
+      this.restApi.retrieveCoursesForRegistration(crsaccount).subscribe(
+        res => {
+          console.log(res);
 
-        this.listOfCoursesToRegister = res;
+          this.listOfCoursesToRegister = res;
 
 
-      },
-      error => {
-        console.log(error);
+        },
+        error => {
+          console.log(error);
 
-        swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'Error retrieving courses!',
+          swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Error retrieving courses!',
 
-        }).then(() => {
+          }).then(() => {
 
-          // this.dialog.closeAll();
+            // this.dialog.closeAll();
+          }
+
+          )
         }
+      );
+    }
 
-        )
-      }
-    );
 
 
   }
 
 
-  // selectUserStory(event: Event, userStory: any) {
-  //   this.selectedUserStory = userStory;
-  //   this.displayDialog = true;
-  //   event.preventDefault();
-  // }
 
   registerCourse(event: Event, regCourse: any) {
     this.selectedRegCourse = regCourse;
@@ -132,7 +115,7 @@ export class RegistercoursesComponent implements OnInit {
             // if rest api success?
             swal.fire(
               'Registered!',
-              'You have enrolled for the course.',
+              'You have registered for the course. If the course is full, the administrator will have to approve the request. If he rejects the request, you will be allocated another course.',
               'success'
             )
 

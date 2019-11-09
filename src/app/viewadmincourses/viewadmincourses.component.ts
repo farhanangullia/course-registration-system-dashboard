@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 
 import swal from 'sweetalert2';
-import { Router } from '@angular/router';
+
 import { RestApiService } from "../rest-api.service";
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-viewclasses',
-  templateUrl: './viewclasses.component.html',
-  styleUrls: ['./viewclasses.component.css']
+  selector: 'app-viewadmincourses',
+  templateUrl: './viewadmincourses.component.html',
+  styleUrls: ['./viewadmincourses.component.css']
 })
-export class ViewclassesComponent implements OnInit {
-  listOfMyClasses: any[];
+export class ViewadmincoursesComponent implements OnInit {
+  listOfMyCourses: any[];
 
   selectedRegCourse: any;
 
@@ -30,26 +31,24 @@ export class ViewclassesComponent implements OnInit {
   sortOrder: number;
 
   checked: boolean = false;
-
   constructor(public restApi: RestApiService, public router: Router) { }
 
   ngOnInit() {
     this.sortOptions = [
-      { label: 'Descending Class ID', value: '!classid' },
-      { label: 'Ascending Class ID', value: 'classid' }
-    ];
 
+      { label: 'Descending Module Code', value: '!modulecode' },
+      { label: 'Ascending Module Code', value: 'modulecode' }
+    ];
 
     let crsaccount = JSON.parse(localStorage.getItem('crsaccount'));
     if (crsaccount === null) {
       this.router.navigate(['/login']);
     } else {
-
-      this.restApi.retrieveStudentClasses(crsaccount).subscribe(
+      this.restApi.retrieveAdminCourses(crsaccount).subscribe(
         res => {
           console.log(res);
 
-          this.listOfMyClasses = res;
+          this.listOfMyCourses = res;
 
 
         },
@@ -59,7 +58,7 @@ export class ViewclassesComponent implements OnInit {
           swal.fire({
             type: 'error',
             title: 'Oops...',
-            text: 'Error retrieving classes!',
+            text: 'Error retrieving courses!',
 
           }).then(() => {
 
@@ -71,9 +70,9 @@ export class ViewclassesComponent implements OnInit {
       );
     }
 
+
+
   }
-
-
   onSortChange(event) {
 
     console.log('asdsa');

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 
 import swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 import { RestApiService } from "../rest-api.service";
 @Component({
   selector: 'app-viewcourses',
@@ -31,13 +31,11 @@ export class ViewcoursesComponent implements OnInit {
 
   checked: boolean = false;
 
-  accountid: any;
-  constructor(public restApi: RestApiService) { }
+  // accountid: any;
+  constructor(public restApi: RestApiService, public router: Router) { }
 
   ngOnInit() {
     this.sortOptions = [
-      // { label: 'Newest First', value: '!supportTicketId' },
-      // { label: 'Oldest First', value: 'supportTicketId' },
       { label: 'Highest Quota', value: '!quota' },
       { label: 'Smallest Quota', value: 'quota' }
     ];
@@ -45,34 +43,39 @@ export class ViewcoursesComponent implements OnInit {
 
 
     let crsaccount = JSON.parse(localStorage.getItem('crsaccount'));
-    this.accountid = crsaccount.accountid;
+    if (crsaccount === null) {
+      this.router.navigate(['/login']);
+    } else {
+
+      this.restApi.retrieveMyStudentCourses(crsaccount).subscribe(
+        res => {
+          console.log(res);
+
+          this.listOfMyCourses = res;
 
 
+        },
+        error => {
+          console.log(error);
 
-    this.restApi.retrieveMyStudentCourses(crsaccount).subscribe(
-      res => {
-        console.log(res);
+          swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Error retrieving courses!',
 
-        this.listOfMyCourses = res;
+          }).then(() => {
 
+            // this.dialog.closeAll();
+          }
 
-      },
-      error => {
-        console.log(error);
-
-        swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'Error retrieving courses!',
-
-        }).then(() => {
-
-          // this.dialog.closeAll();
+          )
         }
+      );
+    }
 
-        )
-      }
-    );
+
+
+
   }
 
   onSortChange(event) {

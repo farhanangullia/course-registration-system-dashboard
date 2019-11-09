@@ -29,6 +29,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { BypasscoursesComponent } from './bypasscourses/bypasscourses.component';
+import { ViewadmincoursesComponent } from './viewadmincourses/viewadmincourses.component';
+import { ViewteachercourseComponent } from './viewteachercourse/viewteachercourse.component';
+import { ViewcompletedcoursesComponent } from './viewcompletedcourses/viewcompletedcourses.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { BypasscoursesComponent } from './bypasscourses/bypasscourses.component'
     RegistercoursesComponent,
     ViewcoursesComponent,
     ViewclassesComponent,
-    BypasscoursesComponent
+    BypasscoursesComponent,
+    ViewadmincoursesComponent,
+    ViewteachercourseComponent,
+    ViewcompletedcoursesComponent
   ],
   imports: [
     BrowserModule,

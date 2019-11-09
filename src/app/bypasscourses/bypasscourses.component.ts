@@ -4,7 +4,7 @@ import { SelectItem } from 'primeng/api';
 import swal from 'sweetalert2';
 
 import { RestApiService } from "../rest-api.service";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-bypasscourses',
   templateUrl: './bypasscourses.component.html',
@@ -36,45 +36,49 @@ export class BypasscoursesComponent implements OnInit {
 
   crsaccount: any;
 
-  constructor(public restApi: RestApiService) { }
+  constructor(public restApi: RestApiService, public router: Router) { }
 
   ngOnInit() {
 
     this.sortOptions = [
-      // { label: 'Newest First', value: '!supportTicketId' },
-      // { label: 'Oldest First', value: 'supportTicketId' },
       { label: 'Highest Priority', value: '!priority' },
       { label: 'Lowest Priority', value: 'priority' }
     ];
 
     this.crsaccount = JSON.parse(localStorage.getItem('crsaccount'));
-    this.accountid = this.crsaccount.accountid;
+    if (this.crsaccount === null) {
+      this.router.navigate(['/login']);
+    } else {
+      this.accountid = this.crsaccount.accountid;
+      this.restApi.retrieveBypassRequests(this.crsaccount).subscribe(
+        res => {
+          console.log(res);
+
+          this.listOfBypassRequests = res;
 
 
-    this.restApi.retrieveBypassRequests(this.crsaccount).subscribe(
-      res => {
-        console.log(res);
+        },
+        error => {
+          console.log(error);
 
-        this.listOfBypassRequests = res;
+          swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Error retrieving bypass requests!',
 
+          }).then(() => {
 
-      },
-      error => {
-        console.log(error);
+            // this.dialog.closeAll();
+          }
 
-        swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'Error retrieving bypass requests!',
-
-        }).then(() => {
-
-          // this.dialog.closeAll();
+          )
         }
+      );
+    }
 
-        )
-      }
-    );
+
+
+
   }
 
 

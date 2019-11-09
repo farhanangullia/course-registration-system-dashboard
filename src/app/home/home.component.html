@@ -1,38 +1,46 @@
 <div class="content container padding-top-3x padding-bottom-3x"
   style="text-align: center; padding-top:10px;padding-bottom: 10px;">
-  <h1>Welcome to Course Registration System</h1>
-  <h1>Farhan Angullia</h1>
-  <br />
+
 
   <mat-grid-list *ngIf="(accountType.includes('student'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%"
-        (click)="viewStudentProfile()">
-        Profile
+    <mat-grid-tile><button mat-stroked-button color="primary"
+        style="width:100%;height:100%;font-size:200%;color:#17407D" (click)="viewStudentProfile()">Profile
       </button></mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" [routerLink]="'/registercourses'"
-        style="width:100%;height:100%;font-size:200%">Register Courses</button>
+    <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/registercourses'"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">Register Courses</button>
     </mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" [routerLink]="'/viewcourses'"
-        style="width:100%;height:100%;font-size:200%">View
+    <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewcourses'"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">View
         My Courses</button>
     </mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">View
+    <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewclasses'" style="
+        width:100%;height:100%;font-size:200%;color:#17407D">View
         Classes</button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=2><button mat-stroked-button color="primary" [routerLink]="'/viewcompletedcourses'" style="
+            width:100%;height:100%;font-size:200%;color:#17407D">View
+        Completed Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list *ngIf="(accountType.includes('admin'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">Profile</button>
+    <mat-grid-tile (click)="viewAdminProfile()"><button mat-stroked-button color="primary"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">Profile</button>
     </mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" [routerLink]="'/bypasscourses'"
-        style="width:100%;height:100%;font-size:200%">Bypass Courses</button>
+    <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/bypasscourses'"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">Bypass Courses</button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=2><button mat-stroked-button color="primary" [routerLink]="'/viewadmincourses'"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">View My Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list *ngIf="(accountType.includes('teacher'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">Profile</button>
+    <mat-grid-tile (click)="viewTeacherProfile()"><button mat-stroked-button color="primary"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">Profile</button>
     </mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">View My
+    <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewteachercourses'"
+        style="width:100%;height:100%;font-size:200%;color:#17407D">View My
         Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
@@ -50,16 +58,42 @@
   <br>
   <p>Department: {{student.departmentid}}</p>
   <p-footer>
-    <button type="button" pButton icon="pi pi-check" (click)="displayStudentProfile=false" label="Ok"></button>
+    <button type="button" pButton icon="pi pi-check" style="background:#17407D" (click)="displayStudentProfile=false"
+      label="Ok"></button>
   </p-footer>
 </p-dialog>
 
-<!-- <p-dialog [(visible)]="displayStudentProfile">
-  <p-header>
-    Header content here
-  </p-header>
-  Content
+<p-dialog header="Profile" [(visible)]="displayAdminProfile" [responsive]="true"
+  [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+  <p>Account ID: {{admin.accountid}}</p>
+  <br>
+  <p>Name: {{admin.name}}</p>
+  <br>
+  <p>AY: {{admin.year}} Semester {{admin.semnum}}</p>
+
+  Change Current AY and Semester: <button mat-fab color="primary" style="background:#17407D"
+    (click)="updateCurrentAY()">
+    <mat-icon>calendar_today</mat-icon>
+  </button>
   <p-footer>
-    //buttons
+    <button type="button" pButton icon="pi pi-check" (click)="displayAdminProfile=false" style="background:#17407D"
+      label="Ok"></button>
+
   </p-footer>
-</p-dialog> -->
+</p-dialog>
+
+<p-dialog header="Profile" [(visible)]="displayTeacherProfile" [responsive]="true"
+  [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+  <p>Account ID: {{teacher.accountid}}</p>
+  <br>
+  <p>Name: {{teacher.name}}</p>
+  <br>
+  <p>Department ID: {{teacher.departmentid}}</p>
+  <br>
+  <p>Room: {{teacher.roomid}}</p>
+
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="displayTeacherProfile=false" label="Ok"
+      style="background:#17407D"></button>
+  </p-footer>
+</p-dialog>

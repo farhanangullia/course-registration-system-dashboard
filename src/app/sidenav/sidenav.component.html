@@ -1,7 +1,7 @@
 <div class="example-container">
-  <mat-toolbar color="primary" class="example-toolbar">
-    <div class="header-button align-icon" (click)="isExpanded = !isExpanded">
-      <mat-icon>menu</mat-icon>Menu
+  <mat-toolbar style="background:#17407D" class="example-toolbar">
+    <div class="header-button align-icon" style="color:white" (click)="isExpanded = !isExpanded">
+      <mat-icon style="color:white">menu</mat-icon>NUS CRS
     </div>
 
     <span class="example-fill-remaining-space"></span>
@@ -11,13 +11,13 @@
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
       <mat-nav-list class="dashboard">
 
-        <a mat-list-item [routerLink]="'/home'">
-          <mat-icon matTooltip="Home" matTooltipPosition="after" mat-list-icon>home</mat-icon>
+        <a mat-list-item matTooltip="Home" matTooltipPosition="after" [routerLink]="'/home'">
+          <mat-icon style="color:#17407D" mat-list-icon>home</mat-icon>
           <p matLine *ngIf="isExpanded">Home</p>
         </a>
 
-        <a mat-list-item (click)="logout($event)">
-          <mat-icon matTooltip="Log out" matTooltipPosition="after" mat-list-icon>exit_to_app</mat-icon>
+        <a mat-list-item matTooltip="Log out" matTooltipPosition="after" (click)="logout($event)">
+          <mat-icon style="color:#17407D" mat-list-icon>exit_to_app</mat-icon>
           <p matLine *ngIf="isExpanded">Sign Out</p>
         </a>
       </mat-nav-list>
