@@ -76,6 +76,19 @@ export class ViewcompletedcoursesComponent implements OnInit {
 
   }
 
+  onSortChange(event) {
 
+    console.log('asdsa');
+    let value = event.value;
+
+    if (value.indexOf('!') === 0) {
+      this.sortOrder = -1;
+      this.sortField = value.substring(1, value.length);
+    }
+    else {
+      this.sortOrder = 1;
+      this.sortField = value;
+    }
+  }
 
 }
