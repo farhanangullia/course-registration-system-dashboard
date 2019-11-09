@@ -3,44 +3,47 @@
 
 
   <mat-grid-list *ngIf="(accountType.includes('student'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-stroked-button color="primary"
-        style="width:100%;height:100%;font-size:200%;color:#17407D" (click)="viewStudentProfile()">Profile
+    <mat-grid-tile><button mat-stroked-button color="primary" style="width:100%;height:100%;font-size:3vw;color:#17407D"
+        (click)="viewStudentProfile()">Profile
       </button></mat-grid-tile>
     <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/registercourses'"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">Register Courses</button>
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">Register Courses</button>
     </mat-grid-tile>
     <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewcourses'"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">View
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">View
         My Courses</button>
     </mat-grid-tile>
     <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewclasses'" style="
-        width:100%;height:100%;font-size:200%;color:#17407D">View
+        width:100%;height:100%;font-size:3vw;color:#17407D">View
         Classes</button>
     </mat-grid-tile>
     <mat-grid-tile colspan=2><button mat-stroked-button color="primary" [routerLink]="'/viewcompletedcourses'" style="
-            width:100%;height:100%;font-size:200%;color:#17407D">View
+            width:100%;height:100%;font-size:3vw;color:#17407D">View
         Completed Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list *ngIf="(accountType.includes('admin'))" cols="2" rowHeight="2:1">
     <mat-grid-tile (click)="viewAdminProfile()"><button mat-stroked-button color="primary"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">Profile</button>
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">Profile</button>
     </mat-grid-tile>
     <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/bypasscourses'"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">Bypass Courses</button>
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">Bypass Courses</button>
     </mat-grid-tile>
-    <mat-grid-tile colspan=2><button mat-stroked-button color="primary" [routerLink]="'/viewadmincourses'"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">View My Courses</button>
+    <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewadmincourses'"
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">View My Courses</button>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="createCourse()"><button mat-stroked-button color="primary"
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">Create Course</button>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list *ngIf="(accountType.includes('teacher'))" cols="2" rowHeight="2:1">
     <mat-grid-tile (click)="viewTeacherProfile()"><button mat-stroked-button color="primary"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">Profile</button>
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">Profile</button>
     </mat-grid-tile>
     <mat-grid-tile><button mat-stroked-button color="primary" [routerLink]="'/viewteachercourses'"
-        style="width:100%;height:100%;font-size:200%;color:#17407D">View My
+        style="width:100%;height:100%;font-size:3vw;color:#17407D">View My
         Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
