@@ -95,7 +95,7 @@ export class BypasscoursesComponent implements OnInit {
       cancelButtonText: 'Reject Bypass Request'
     }).then((result) => {
       if (result.value) {
-        let bypassReqParams = { "studentid": this.selectedBypassReq.studentid, "isBypassed": true };
+        let bypassReqParams = { "studentid": this.selectedBypassReq.studentid, "isBypassed": true, "modulecode": this.selectedBypassReq.modulecode };
         this.restApi.updateBypassRequest(bypassReqParams).subscribe(
           res => {
             console.log(res);
@@ -153,7 +153,7 @@ export class BypasscoursesComponent implements OnInit {
         );
 
       } else if (result.dismiss === swal.DismissReason.cancel) {
-        let bypassReqParams = { "studentid": this.selectedBypassReq.studentid, "isBypassed": false };
+        let bypassReqParams = { "studentid": this.selectedBypassReq.studentid, "isBypassed": false, "modulecode": this.selectedBypassReq.modulecode };
         this.restApi.updateBypassRequest(bypassReqParams).subscribe(
           res => {
             console.log(res);

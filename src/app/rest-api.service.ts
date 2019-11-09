@@ -62,6 +62,56 @@ export class RestApiService {
     );
   }
 
+  retrieveStudentProfile(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveStudentProfile", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  retrieveStudentClasses(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveStudentClasses", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  retrieveStudentCompletedModules(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveStudentCompletedModules", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  retrieveAdminProfile(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveAdminProfile", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  retrieveAdminCourses(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveAdminCourses", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  retrieveTeacherProfile(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveTeacherProfile", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  retrieveTeacherCourses(crsaccount: any): Observable<any> {
+
+    return this.httpClient.post<any>(this.apiURL + "/retrieveTeacherCourses", crsaccount, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

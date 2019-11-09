@@ -5,29 +5,61 @@
   <br />
 
   <mat-grid-list *ngIf="(accountType.includes('student'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">
-        <mat-icon style="font-size:70px;position: absolute">account_box</mat-icon>Profile
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%"
+        (click)="viewStudentProfile()">
+        Profile
       </button></mat-grid-tile>
     <mat-grid-tile><button mat-button color="primary" [routerLink]="'/registercourses'"
-        style="width:100%;height:100%">Register Courses</button>
+        style="width:100%;height:100%;font-size:200%">Register Courses</button>
     </mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" [routerLink]="'/viewcourses'" style="width:100%;height:100%">View
+    <mat-grid-tile><button mat-button color="primary" [routerLink]="'/viewcourses'"
+        style="width:100%;height:100%;font-size:200%">View
         My Courses</button>
     </mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">View Classes</button>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">View
+        Classes</button>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list *ngIf="(accountType.includes('admin'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">Profile</button>
+    </mat-grid-tile>
     <mat-grid-tile><button mat-button color="primary" [routerLink]="'/bypasscourses'"
-        style="width:100%;height:100%">Bypass Courses</button>
+        style="width:100%;height:100%;font-size:200%">Bypass Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list *ngIf="(accountType.includes('teacher'))" cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">Profile</button></mat-grid-tile>
-    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%">View My Courses</button>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">Profile</button>
+    </mat-grid-tile>
+    <mat-grid-tile><button mat-button color="primary" style="width:100%;height:100%;font-size:200%">View My
+        Courses</button>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<p-dialog header="Profile" [(visible)]="displayStudentProfile" [responsive]="true"
+  [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+  <p>Account ID: {{student.accountid}}</p>
+  <br>
+  <p>Name: {{student.name}}</p>
+  <br>
+  <p>Year: {{student.year}}</p>
+  <br>
+  <p>Student Type: {{student.isgraduate? 'GRADUATE' : 'UNDERGRADUATE'}}</p>
+  <br>
+  <p>Department: {{student.departmentid}}</p>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="displayStudentProfile=false" label="Ok"></button>
+  </p-footer>
+</p-dialog>
+
+<!-- <p-dialog [(visible)]="displayStudentProfile">
+  <p-header>
+    Header content here
+  </p-header>
+  Content
+  <p-footer>
+    //buttons
+  </p-footer>
+</p-dialog> -->
